@@ -47,3 +47,51 @@ OneStopOnline.net is a powerful, all-in-one full-stack web platform designed to 
 1. Clone the repository:
    ```bash
    git clone https://github.com/drillertech/onestoponline.net.git
+2.Install frontend dependencies:
+
+bash
+Copy
+Edit
+cd client
+npm install
+3.Install backend dependencies:
+
+bash
+Copy
+Edit
+cd server
+npm install
+4.Create a .env file in the server folder:
+
+ini
+Copy
+Edit
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+MPESA_CONSUMER_KEY=your_daraja_consumer_key
+MPESA_CONSUMER_SECRET=your_daraja_consumer_secret
+MPESA_SHORTCODE=your_shortcode
+MPESA_PASSKEY=your_passkey
+CALLBACK_URL=https://yourdomain.com/api/mpesa/callback
+5.Start the development servers:
+
+bash
+Copy
+Edit
+# Backend
+cd server
+npm run dev
+
+# Frontend (in a new terminal)
+cd client
+npm start
+👤 Developer
+Eugine Okero
+
+Full-stack Developer & Digital Service Provider
+[LinkedIn Profile] (optional)
+Email: drillerktech.com
+
+📜 License
+This project is licensed under the MIT License.
+
