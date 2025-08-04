@@ -8,6 +8,7 @@ import WebDevelopment from "./pages/WebDevelopment";
 import SEOServices from "./pages/SEOServices";
 import MedicalServices from "./pages/MedicalServices";
 import Store from "./pages/Store";
+import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/seo-services" element={<SEOServices />} />
           <Route path="/medical" element={<MedicalServices />} />
           <Route path="/store" element={<Store />} />
+          <Route path="/cart" element={<Cart />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
