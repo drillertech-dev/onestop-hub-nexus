@@ -10,6 +10,10 @@ import { ShoppingBag, Search, Star, Filter, ShoppingCart, Heart, ArrowRight } fr
 import phoneAccessoriesImg from '@/assets/phone-accessories.jpg';
 import laptopImg from '@/assets/laptop.jpg';
 import furnitureImg from '@/assets/furniture.jpg';
+import basicPhoneCaseImg from '@/assets/basic-phone-case.jpg';
+import usbCableImg from '@/assets/usb-cable.jpg';
+import stationerySetImg from '@/assets/stationery-set.jpg';
+import householdItemsImg from '@/assets/household-items.jpg';
 
 const Store = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -20,16 +24,19 @@ const Store = () => {
     { id: 'phones', name: 'Phone Accessories' },
     { id: 'laptops', name: 'Laptops' },
     { id: 'furniture', name: 'Furniture' },
-    { id: 'electronics', name: 'Electronics' }
+    { id: 'electronics', name: 'Electronics' },
+    { id: 'household', name: 'Household Items' },
+    { id: 'stationery', name: 'Stationery' }
   ];
 
   const products = [
+    // Existing premium products (converted to KSH)
     {
       id: 1,
       name: 'Wireless Earbuds Pro',
       category: 'phones',
-      price: 129.99,
-      originalPrice: 179.99,
+      price: 16899,
+      originalPrice: 23399,
       image: phoneAccessoriesImg,
       rating: 4.8,
       reviews: 1024,
@@ -41,8 +48,8 @@ const Store = () => {
       id: 2,
       name: 'Premium Phone Case',
       category: 'phones',
-      price: 24.99,
-      originalPrice: 34.99,
+      price: 3249,
+      originalPrice: 4549,
       image: phoneAccessoriesImg,
       rating: 4.6,
       reviews: 523,
@@ -54,8 +61,8 @@ const Store = () => {
       id: 3,
       name: 'MacBook Pro 16"',
       category: 'laptops',
-      price: 2399.99,
-      originalPrice: 2599.99,
+      price: 311999,
+      originalPrice: 337999,
       image: laptopImg,
       rating: 4.9,
       reviews: 2847,
@@ -67,8 +74,8 @@ const Store = () => {
       id: 4,
       name: 'Gaming Laptop',
       category: 'laptops',
-      price: 1299.99,
-      originalPrice: 1499.99,
+      price: 168999,
+      originalPrice: 194999,
       image: laptopImg,
       rating: 4.7,
       reviews: 891,
@@ -80,8 +87,8 @@ const Store = () => {
       id: 5,
       name: 'Modern Sofa Set',
       category: 'furniture',
-      price: 899.99,
-      originalPrice: 1199.99,
+      price: 116999,
+      originalPrice: 155999,
       image: furnitureImg,
       rating: 4.5,
       reviews: 342,
@@ -93,14 +100,132 @@ const Store = () => {
       id: 6,
       name: 'Office Chair',
       category: 'furniture',
-      price: 249.99,
-      originalPrice: 299.99,
+      price: 32499,
+      originalPrice: 38999,
       image: furnitureImg,
       rating: 4.4,
       reviews: 567,
       description: 'Ergonomic office chair with lumbar support',
       badge: 'Sale',
       inStock: false
+    },
+    // New affordable products in KSH
+    {
+      id: 7,
+      name: 'Basic Phone Case',
+      category: 'phones',
+      price: 650,
+      originalPrice: 899,
+      image: basicPhoneCaseImg,
+      rating: 4.2,
+      reviews: 184,
+      description: 'Simple protective phone case for daily use',
+      badge: 'Budget',
+      inStock: true
+    },
+    {
+      id: 8,
+      name: 'USB Charging Cable',
+      category: 'phones',
+      price: 390,
+      originalPrice: 520,
+      image: usbCableImg,
+      rating: 4.3,
+      reviews: 267,
+      description: 'Fast charging USB cable - 1 meter length',
+      badge: 'Sale',
+      inStock: true
+    },
+    {
+      id: 9,
+      name: 'Stationery Set',
+      category: 'stationery',
+      price: 1299,
+      originalPrice: 1699,
+      image: stationerySetImg,
+      rating: 4.5,
+      reviews: 89,
+      description: 'Complete stationery set with pens, pencils & more',
+      badge: 'New',
+      inStock: true
+    },
+    {
+      id: 10,
+      name: 'Notebook Set (5 pieces)',
+      category: 'stationery',
+      price: 780,
+      originalPrice: 999,
+      image: stationerySetImg,
+      rating: 4.1,
+      reviews: 156,
+      description: 'A5 lined notebooks perfect for school or office',
+      badge: 'Budget',
+      inStock: true
+    },
+    {
+      id: 11,
+      name: 'Cleaning Supplies Kit',
+      category: 'household',
+      price: 2599,
+      originalPrice: 3299,
+      image: householdItemsImg,
+      rating: 4.4,
+      reviews: 203,
+      description: 'Essential cleaning supplies for your home',
+      badge: 'Sale',
+      inStock: true
+    },
+    {
+      id: 12,
+      name: 'Dish Soap (1L)',
+      category: 'household',
+      price: 299,
+      originalPrice: 399,
+      image: householdItemsImg,
+      rating: 4.0,
+      reviews: 78,
+      description: 'Effective dish soap for sparkling clean dishes',
+      badge: 'Budget',
+      inStock: true
+    },
+    {
+      id: 13,
+      name: 'Phone Screen Protector',
+      category: 'phones',
+      price: 520,
+      originalPrice: 780,
+      image: basicPhoneCaseImg,
+      rating: 4.3,
+      reviews: 312,
+      description: 'Tempered glass screen protector',
+      badge: 'Bestseller',
+      inStock: true
+    },
+    {
+      id: 14,
+      name: 'Ballpoint Pens (Pack of 10)',
+      category: 'stationery',
+      price: 450,
+      originalPrice: 650,
+      image: stationerySetImg,
+      rating: 4.2,
+      reviews: 134,
+      description: 'Smooth writing ballpoint pens in blue ink',
+      badge: 'Budget',
+      inStock: true
+    },
+    {
+      id: 15,
+      name: 'Hand Sanitizer (500ml)',
+      category: 'household',
+      price: 650,
+      originalPrice: 899,
+      image: householdItemsImg,
+      rating: 4.6,
+      reviews: 245,
+      description: '70% alcohol hand sanitizer with aloe vera',
+      badge: 'Hot',
+      inStock: true
     }
   ];
 
@@ -121,6 +246,7 @@ const Store = () => {
       case 'Hot': return 'destructive';
       case 'New': return 'secondary';
       case 'Sale': return 'outline';
+      case 'Budget': return 'secondary';
       default: return 'default';
     }
   };
@@ -142,7 +268,7 @@ const Store = () => {
               Online Store
             </h1>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Discover amazing products from phones and laptops to furniture and more. Free shipping on orders over $100.
+              Discover amazing products from phones and laptops to furniture and more. Free shipping on orders over KSH 13,000.
             </p>
             <Button size="lg" variant="secondary" className="px-8 py-6 text-lg">
               Shop Now
@@ -254,10 +380,10 @@ const Store = () => {
                   </div>
                   
                   <div className="flex items-center space-x-2">
-                    <span className="text-2xl font-bold text-primary">${product.price}</span>
+                    <span className="text-2xl font-bold text-primary">KSH {product.price.toLocaleString()}</span>
                     {product.originalPrice && (
                       <span className="text-lg text-muted-foreground line-through">
-                        ${product.originalPrice}
+                        KSH {product.originalPrice.toLocaleString()}
                       </span>
                     )}
                   </div>
@@ -337,10 +463,10 @@ const Store = () => {
                   </div>
                   
                   <div className="flex items-center space-x-2">
-                    <span className="text-2xl font-bold text-primary">${product.price}</span>
+                    <span className="text-2xl font-bold text-primary">KSH {product.price.toLocaleString()}</span>
                     {product.originalPrice && (
                       <span className="text-lg text-muted-foreground line-through">
-                        ${product.originalPrice}
+                        KSH {product.originalPrice.toLocaleString()}
                       </span>
                     )}
                   </div>
@@ -368,7 +494,7 @@ const Store = () => {
             <Card className="text-center shadow-soft">
               <CardHeader>
                 <CardTitle className="text-lg">Free Shipping</CardTitle>
-                <CardDescription>On orders over $100</CardDescription>
+                <CardDescription>On orders over KSH 13,000</CardDescription>
               </CardHeader>
             </Card>
 
