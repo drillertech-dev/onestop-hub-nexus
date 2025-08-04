@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft, CreditCard } from 'lucide-react';
+import { ShoppingCart, Plus, Minus, Trash2, ArrowLeft, CreditCard, MessageCircle, Phone } from 'lucide-react';
 import phoneAccessoriesImg from '@/assets/phone-accessories.jpg';
 import laptopImg from '@/assets/laptop.jpg';
 import furnitureImg from '@/assets/furniture.jpg';
@@ -15,7 +15,7 @@ const Cart = () => {
     {
       id: 1,
       name: 'Wireless Earbuds Pro',
-      price: 129.99,
+      price: 16899,
       quantity: 2,
       image: phoneAccessoriesImg,
       inStock: true
@@ -23,7 +23,7 @@ const Cart = () => {
     {
       id: 2,
       name: 'MacBook Pro 16"',
-      price: 2399.99,
+      price: 311999,
       quantity: 1,
       image: laptopImg,
       inStock: true
@@ -31,7 +31,7 @@ const Cart = () => {
     {
       id: 3,
       name: 'Modern Sofa Set',
-      price: 899.99,
+      price: 116999,
       quantity: 1,
       image: furnitureImg,
       inStock: true
@@ -39,6 +39,16 @@ const Cart = () => {
   ]);
 
   const [promoCode, setPromoCode] = useState('');
+
+  const proceedToCheckout = () => {
+    alert('Redirecting to secure M-Pesa checkout...');
+  };
+
+  const contactWhatsApp = () => {
+    const message = `Hi! I'm interested in purchasing items from my cart:\n\n${cartItems.map(item => `- ${item.name} (Qty: ${item.quantity}) - KSH ${(item.price * item.quantity).toLocaleString()}`).join('\n')}\n\nTotal: KSH ${total.toLocaleString()}\n\nPlease help me complete this order.`;
+    const whatsappUrl = `https://wa.me/254710980500?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   const updateQuantity = (id: number, newQuantity: number) => {
     if (newQuantity === 0) {
@@ -57,7 +67,7 @@ const Cart = () => {
   };
 
   const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const shipping = subtotal > 100 ? 0 : 15.00;
+  const shipping = subtotal > 13000 ? 0 : 500;
   const discount = promoCode === 'SAVE10' ? subtotal * 0.1 : 0;
   const total = subtotal + shipping - discount;
 
@@ -115,7 +125,7 @@ const Cart = () => {
                         />
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg mb-2">{item.name}</h3>
-                          <p className="text-2xl font-bold text-primary mb-3">${item.price}</p>
+                          <p className="text-2xl font-bold text-primary mb-3">KSH {item.price.toLocaleString()}</p>
                           <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-3">
                               <Button
@@ -146,7 +156,7 @@ const Cart = () => {
                         </div>
                         <div className="text-right">
                           <p className="text-lg font-bold">
-                            ${(item.price * item.quantity).toFixed(2)}
+                            KSH {(item.price * item.quantity).toLocaleString()}
                           </p>
                         </div>
                       </div>
@@ -169,16 +179,16 @@ const Cart = () => {
                   <CardContent className="space-y-4">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
-                      <span>${subtotal.toFixed(2)}</span>
+                      <span>KSH {subtotal.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Shipping</span>
-                      <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                      <span>{shipping === 0 ? 'Free' : `KSH ${shipping.toLocaleString()}`}</span>
                     </div>
                     {discount > 0 && (
                       <div className="flex justify-between text-green-600">
                         <span>Discount</span>
-                        <span>-${discount.toFixed(2)}</span>
+                        <span>-KSH {discount.toLocaleString()}</span>
                       </div>
                     )}
                     
@@ -186,7 +196,7 @@ const Cart = () => {
                     
                     <div className="flex justify-between text-lg font-bold">
                       <span>Total</span>
-                      <span>${total.toFixed(2)}</span>
+                      <span>KSH {total.toLocaleString()}</span>
                     </div>
 
                     {/* Promo Code */}
@@ -207,10 +217,25 @@ const Cart = () => {
                   </CardContent>
                   
                   <CardFooter className="flex flex-col space-y-3">
-                    <Button className="w-full" size="lg">
+                    <Button 
+                      className="w-full" 
+                      size="lg"
+                      onClick={proceedToCheckout}
+                    >
                       <CreditCard className="mr-2 h-5 w-5" />
                       Proceed to Checkout
                     </Button>
+                    
+                    <Button 
+                      variant="outline" 
+                      className="w-full" 
+                      size="lg"
+                      onClick={contactWhatsApp}
+                    >
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      Order via WhatsApp
+                    </Button>
+                    
                     <p className="text-xs text-muted-foreground text-center">
                       Secure checkout with M-Pesa payment
                     </p>
@@ -222,7 +247,7 @@ const Cart = () => {
                   <CardContent className="p-6">
                     <h3 className="font-semibold mb-4">Why shop with us?</h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>✓ Free shipping on orders over $100</li>
+                      <li>✓ Free shipping on orders over KSH 13,000</li>
                       <li>✓ 30-day return policy</li>
                       <li>✓ Secure M-Pesa payments</li>
                       <li>✓ Fast 2-3 day delivery</li>
